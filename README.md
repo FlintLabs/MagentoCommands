@@ -8,6 +8,33 @@ Zend Framework and Magento.
 
 Type `zf` to see the MagentoRealisation and MagentoModules commands.
 
+## MagentoModules
+
+This assists with telling you what modules are present, and where they are loading their configuration from.
+
+    $ zf show magento-modules | grep Foo_Bar
+    - Foo_Bar Active: Y Config: app/code/local/Foo/Bar/etc/config.xml
+
+    $ zf debug magento-modules
+    Enter module name:
+    zf> Foo_Bar
+    Found module config in app/etc/modules: app/etc/modules/Foo_Bar.xml
+    Config File exists in the module: Foo_Bar
+    app/code/local/Foo/Bar/etc/config.xml
+    <?xml version="1.0" ?>
+    <config>
+        <global>
+            <blocks>
+                <catalog>
+                    <rewrite>
+                        <product_view>Foo_Bar_Block_Product</product_view>
+                    </rewrite>
+                </catalog>
+            </blocks>
+        </global>
+    </config>
+
+
 ## MagentoRealisation
 
 This assists telling you which the path, such as `catalog/product` maps to a class, and tells you where it exists. This works for Models, Resource Models, Blocks, etc.
@@ -29,6 +56,8 @@ This assists telling you which the path, such as `catalog/product` maps to a cla
     array(1) {
       ["type"] => string(15) "catalog/product"
     }
+
+
 
 
 # Install
