@@ -80,11 +80,16 @@ class FlintLabs_Magento_Commands_MagentoRealise extends Zend_Tool_Framework_Prov
 
     private function locateClass($class)
     {
-        $modulePath = str_replace('_', '/', $class) . '.php';
-        $paths = array('app/code/local', 'app/code/community', 'app/code/core');
-        foreach($paths as $path) {
-            if(file_exists(getcwd() . '/' . $path . '/' . $modulePath)) {
-                return $path . '/' . $modulePath;
+        if(function_exists('mageFindClassFile')) {
+            return mageFindClassFile($class);
+        } else {
+            // For some reason... can be removed after testing
+            $modulePath = str_replace('_', '/', $class) . '.php';
+            $paths = array('app/code/local', 'app/code/community', 'app/code/core');
+            foreach($paths as $path) {
+                if(file_exists(getcwd() . '/' . $path . '/' . $modulePath)) {
+                    return $path . '/' . $modulePath;
+                }
             }
         }
     }
