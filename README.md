@@ -38,6 +38,17 @@ Download and put the commands in the zf include path, like `/usr/share/php/libze
 You will need to be able to install the following:
 - ZF
 
+## Load some commands
+
+If you haven't got a ~/.zf.ini, create it using the following
+
+    zf create config
+
+Add the following to your ~/.zf.ini
+
+    basicloader.classes.1 = "FlintLabs_Magento_Commands_MagentoRealise"
+    basicloader.classes.1 = "FlintLabs_Magento_Commands_MagentoModules"
+
 
 ## Install ZF on Ubuntu
 
@@ -50,14 +61,3 @@ You will need to be able to run `zf` from the command line.
 Install the ZF framework bin commands
 
     sudo apt-get install zend-framework-bin
-
-### Load some commands
-
-If you haven't got a .zf.ini, create it using the following
-
-    zf create config
-
-Add the following to your php.ini
-
-    basicloader.classes.1 = "FlintLabs_Magento_Commands_MagentoRealise"
-    basicloader.classes.1 = "FlintLabs_Magento_Commands_MagentoModules"
